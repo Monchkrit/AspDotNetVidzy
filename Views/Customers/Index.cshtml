@@ -1,0 +1,19 @@
+@model Vidly.ViewModels.CustomerViewModel
+
+@if (Model.Customers.Count == 0)
+{
+  <text>There aren't any customers.</text>
+}
+<table class="table table-hover">
+  <thead>
+    <tr>
+      <th>Customers</th>
+    </tr>
+  </thead>
+  @foreach (var customer in Model.Customers)
+  {
+    <tr>
+      <td>@Html.ActionLink(customer.Name, "Details", "Customers", new { type = customer.Type }, null)</td>
+    </tr>
+  }
+</table>

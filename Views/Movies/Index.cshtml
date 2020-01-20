@@ -1,0 +1,19 @@
+@model Vidly.ViewModels.MovieViewModel
+
+@if (Model.Movies.Count == 0)
+{
+  <text>There aren't any movies.</text>
+}
+<table class="table table-bordered table-hover">
+  <thead>
+    <tr>
+      <th>Movies</th>
+    </tr>
+  </thead>
+  @foreach (var movie in Model.Movies)
+  {
+    <tr>
+      <td>@movie.Name</td>
+    </tr>
+  }
+</table>
