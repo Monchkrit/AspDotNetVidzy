@@ -4,11 +4,10 @@ using Microsoft.EntityFrameworkCore.Infrastructure;
 using Microsoft.EntityFrameworkCore.Migrations;
 using Microsoft.EntityFrameworkCore.Storage.ValueConversion;
 using Npgsql.EntityFrameworkCore.PostgreSQL.Metadata;
-using Vidly.Models;
 
 namespace Vidly.Migrations
 {
-    [DbContext(typeof(VidlyContext))]
+  [DbContext(typeof(VidlyContext))]
     [Migration("20200120164155_initial")]
     partial class initial
     {

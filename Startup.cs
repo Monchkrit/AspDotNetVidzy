@@ -9,12 +9,11 @@ using Microsoft.Extensions.Configuration;
 using Microsoft.Extensions.DependencyInjection;
 using Microsoft.Extensions.Hosting;
 using Microsoft.EntityFrameworkCore;
-using Vidly.Models;
 using Microsoft.AspNetCore.Mvc;
 
 namespace Vidly
 {
-    public class Startup
+  public class Startup
     {
         public Startup(IConfiguration configuration)
         {
@@ -28,7 +27,7 @@ namespace Vidly
         {
             services.AddControllersWithViews();
             services.AddDbContext<VidlyContext>(options =>
-            options.UseNpgsql(Configuration.GetConnectionString("DefaultConnection")));
+                options.UseNpgsql(Configuration.GetConnectionString("VidlyContext")));
             services.AddMvc().SetCompatibilityVersion(CompatibilityVersion.Version_3_0);
         }
 
