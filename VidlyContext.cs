@@ -5,6 +5,9 @@ namespace Vidly
 {
   public class VidlyContext : DbContext
   {
+    public VidlyContext()
+    {
+    }
     public VidlyContext(DbContextOptions<VidlyContext> options)
        : base(options)
     { }

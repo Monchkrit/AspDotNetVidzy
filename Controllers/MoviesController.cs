@@ -8,8 +8,10 @@ using Vidly.ViewModels;
 
 namespace Vidly.Controllers
 {
+  
   public class MoviesController : Controller
   {
+    public VidlyContext _context;
     public ActionResult Random()
     {
       var movie = new Movie() { Name = "Shrek!" };
@@ -34,11 +36,24 @@ namespace Vidly.Controllers
     }
     public ActionResult Index()
     {
-      var movies = new List<Movie>
+      VidlyContext vidlyContext = new VidlyContext();
+      _context = vidlyContext;
+      var movies = new List<Movie>();
+
+      foreach (var movie in _context.Movies)
       {
-        new Movie { Name = "Shreck!" },
-        new Movie { Name = "Wallie" }
-      };
+        Movie m = new Movie
+        {
+          Id = movie.Id,
+          Name = movie.Name
+        };
+        movies.Add(m);
+      }
+      
+      // {
+      //   new Movie { Name = "Shreck!" },
+      //   new Movie { Name = "Wallie" }
+      // };
       var viewModel = new MovieViewModel
       {
         Movies = movies
