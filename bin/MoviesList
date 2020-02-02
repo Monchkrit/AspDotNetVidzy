@@ -1,0 +1,5 @@
+﻿INSERT INTO "Movies" ("Name", "GenreId", "DateAdded", "ReleaseDate") VALUES ('The Godfather', 2, '1/1/1972', '2/2/2020');
+INSERT INTO "Movies" ("Name", "GenreId", "DateAdded", "ReleaseDate") VALUES ('The Dark Knight', 1, '1/1/2008', '2/2/2020');
+INSERT INTO "Movies" ("Name", "GenreId", "DateAdded", "ReleaseDate") VALUES ('The Godfather: Part II', 2, '1/1/1974', '2/2/2020');
+INSERT INTO "Movies" ("Name", "GenreId", "DateAdded", "ReleaseDate") VALUES ('Pulp Fiction', 2, '1/1/1994', '2/2/2020');
+INSERT INTO "Movies" ("Name", "GenreId", "DateAdded", "ReleaseDate") VALUES ('Schindler''s List', 2, '1/1/1993', '2/2/2020');

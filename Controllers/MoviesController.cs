@@ -34,7 +34,7 @@ namespace Vidly.Controllers
           Name = movie.Name
         };
         movies.Add(m);
-      }
+      }      
       
       var viewModel = new MovieViewModel
       {

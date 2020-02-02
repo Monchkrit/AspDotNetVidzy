@@ -1,0 +1,7 @@
+﻿INSERT INTO "Genres" ("GenreId", "Type") VALUES(1, 'Action');
+INSERT INTO "Genres" ("GenreId", "Type") VALUES(2, 'Thriller');
+INSERT INTO "Genres" ("GenreId", "Type") VALUES(3, 'Family');
+INSERT INTO "Genres" ("GenreId", "Type") VALUES(4, 'Romance');
+INSERT INTO "Genres" ("GenreId", "Type") VALUES(5, 'Comedy');
+INSERT INTO "Genres" ("GenreId", "Type") VALUES(6, 'Science Fiction');
+INSERT INTO "Genres" ("GenreId", "Type") VALUES(7, 'Drama');
