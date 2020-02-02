@@ -12,6 +12,37 @@ namespace Vidly.Controllers
   public class MoviesController : Controller
   {
     public VidlyContext _context;
+    public MoviesController()
+    {
+      _context = new VidlyContext();
+    }
+
+    protected override void Dispose(bool disposing)
+    {
+      base.Dispose(disposing);
+    }
+    public ActionResult Index()
+    {
+
+      var movies = new List<Movie>();
+
+      foreach (var movie in _context.Movies)
+      {
+        Movie m = new Movie
+        {
+          Id = movie.Id,
+          Name = movie.Name
+        };
+        movies.Add(m);
+      }
+      
+      var viewModel = new MovieViewModel
+      {
+        Movies = movies
+      };
+
+      return View(viewModel);
+    }
     public ActionResult Random()
     {
       var movie = new Movie() { Name = "Shrek!" };
@@ -34,34 +65,7 @@ namespace Vidly.Controllers
     {
       return Content("id=" + id);
     }
-    public ActionResult Index()
-    {
-      VidlyContext vidlyContext = new VidlyContext();
-      _context = vidlyContext;
-      var movies = new List<Movie>();
-
-      foreach (var movie in _context.Movies)
-      {
-        Movie m = new Movie
-        {
-          Id = movie.Id,
-          Name = movie.Name
-        };
-        movies.Add(m);
-      }
-      
-      // {
-      //   new Movie { Name = "Shreck!" },
-      //   new Movie { Name = "Wallie" }
-      // };
-      var viewModel = new MovieViewModel
-      {
-        Movies = movies
-      };
-
-      return View(viewModel);
-    }
-
+    
     [Route("/movies/released/{year}/{month:regex(\\d{{2}}):range(1, 12)}")]
     public ActionResult ByReleaseYear(int year, int month)
     {

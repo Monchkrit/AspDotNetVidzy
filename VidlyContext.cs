@@ -14,6 +14,7 @@ namespace Vidly
 
     public DbSet<Movie> Movies { get; set; }
     public DbSet<Customer> Customers { get; set; }
+    public DbSet<Genre> Genres { get; set; }
 
     protected override void OnConfiguring(DbContextOptionsBuilder optionsBuilder)
           => optionsBuilder.UseNpgsql("Host=localhost;Database=vidly;Username=postgres;Password=password");
