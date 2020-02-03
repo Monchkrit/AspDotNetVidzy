@@ -5,6 +5,8 @@ using Microsoft.AspNetCore.Mvc;
 using Vidly.Models;
 using System.Collections.Generic;
 using Vidly.ViewModels;
+using Microsoft.EntityFrameworkCore;
+using System.Linq;
 
 namespace Vidly.Controllers
 {
@@ -24,14 +26,18 @@ namespace Vidly.Controllers
     public ActionResult Index()
     {
 
-      var movies = new List<Movie>();
+      var moviesList = _context.Movies.Include(m => m.Genre).ToList();
+      List<Movie> movies = new List<Movie>();
 
       foreach (var movie in _context.Movies)
       {
         Movie m = new Movie
         {
           Id = movie.Id,
-          Name = movie.Name
+          Name = movie.Name,
+          Genre = movie.Genre,
+          ReleaseDate = movie.ReleaseDate,
+          DateAdded = movie.DateAdded
         };
         movies.Add(m);
       }      

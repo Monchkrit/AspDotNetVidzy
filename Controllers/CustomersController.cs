@@ -11,18 +11,28 @@ namespace Vidly.Controllers
 {
   public class CustomersController : Controller
   {
+    public VidlyContext _context;
+    public CustomersController()
+    {
+      _context = new VidlyContext();
+    }
+    protected override void Dispose(bool disposing)
+    {
+      base.Dispose(disposing);
+    }
 
     public ActionResult Index()
     {
-      var customers = new List<Customer>
+      
+      var customers = new List<Customer>();
+      
+      foreach (var customer in customers)
       {
-        new Customer { Name = "Donny Buckman", Type = 0 },
-        new Customer { Name = "Susan Buckman", Type = 1 }
-      };
-      // // using (VidlyContext context = new VidlyContext())
-      //   {
-      //     var c = context.Customers;
-      //   }
+        Customer c = new Customer
+        {
+          Name = customer.Name
+        };
+      }
       var viewModel = new CustomerViewModel
       {        
         Customers = customers

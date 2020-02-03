@@ -8,12 +8,18 @@
   <thead>
     <tr>
       <th>Movies</th>
+      <th>Genre</th>
+      <th>Release Date</th>
+      <th>Date Added</th>
     </tr>
   </thead>
   @foreach (var movie in Model.Movies)
   {
     <tr>
       <td>@movie.Name</td>
+      <td>@movie.Genre.Type</td>
+      <td>@movie.ReleaseDate.ToString("MM/dd/yyyy")</td>
+      <td>@movie.DateAdded.ToString("MM/dd/yyyy")</td>
     </tr>
   }
 </table>

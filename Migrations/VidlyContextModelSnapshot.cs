@@ -39,6 +39,9 @@ namespace Vidly.Migrations
                     b.Property<string>("CustomerId")
                         .HasColumnType("text");
 
+                    b.Property<DateTime>("BirthDate")
+                        .HasColumnType("timestamp without time zone");
+
                     b.Property<bool>("IsSubscribedToNewsletter")
                         .HasColumnType("boolean");
 
@@ -94,8 +97,11 @@ namespace Vidly.Migrations
                     b.Property<string>("Name")
                         .HasColumnType("text");
 
-                    b.Property<DateTime>("ReaseDate")
+                    b.Property<DateTime>("ReleaseDate")
                         .HasColumnType("timestamp without time zone");
+
+                    b.Property<short>("Stock")
+                        .HasColumnType("smallint");
 
                     b.HasKey("Id");
 

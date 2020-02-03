@@ -10,8 +10,8 @@ using Vidly;
 namespace Vidly.Migrations
 {
     [DbContext(typeof(VidlyContext))]
-    [Migration("20200202142102_AddDatesToMovies")]
-    partial class AddDatesToMovies
+    [Migration("20200203142723_AddStockToMovie")]
+    partial class AddStockToMovie
     {
         protected override void BuildTargetModel(ModelBuilder modelBuilder)
         {
@@ -40,6 +40,9 @@ namespace Vidly.Migrations
                 {
                     b.Property<string>("CustomerId")
                         .HasColumnType("text");
+
+                    b.Property<DateTime>("BirthDate")
+                        .HasColumnType("timestamp without time zone");
 
                     b.Property<bool>("IsSubscribedToNewsletter")
                         .HasColumnType("boolean");
@@ -98,6 +101,9 @@ namespace Vidly.Migrations
 
                     b.Property<DateTime>("ReleaseDate")
                         .HasColumnType("timestamp without time zone");
+
+                    b.Property<short>("Stock")
+                        .HasColumnType("smallint");
 
                     b.HasKey("Id");
 
