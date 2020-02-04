@@ -49,22 +49,17 @@ namespace Vidly.Controllers
 
       return View(viewModel);
     }
-    public ActionResult Random()
+    public ActionResult New()
     {
-      var movie = new Movie() { Name = "Shrek!" };
-      var customers = new List<Customer>
-      {
-        new Customer { Name = "Customer 1" },
-        new Customer { Name = "Customer 2" }
-      };
-
-      var viewModel = new RandomMovieViewModel
-      {
-        Movie = movie,
-        Customers = customers
-      };
-
-      return View(viewModel);
+      return View();
+    }
+    [Route("/movies/detail/{Id}")]
+    public ActionResult Detail(int id)
+    {
+      var movies = _context.Movies.Include(m => m.Genre).ToList();
+      Movie movie = movies.Find(m => m.Id == id);
+      
+      return View(movie);
     }
 
     public ActionResult Edit(int id)

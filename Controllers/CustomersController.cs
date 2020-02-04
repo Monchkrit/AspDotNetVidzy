@@ -24,46 +24,36 @@ namespace Vidly.Controllers
     public ActionResult Index()
     {
       
-      var customers = new List<Customer>();
+      var customerList = new List<Customer>();
+      var customers = _context.Customers.Include(c => c.MembershipType);
       
       foreach (var customer in customers)
       {
         Customer c = new Customer
         {
-          Name = customer.Name
+          Name = customer.Name,
+          CustomerId = customer.CustomerId
         };
+        customerList.Add(c);
       }
       var viewModel = new CustomerViewModel
       {        
-        Customers = customers
+        Customers = customerList
       };
 
       return View(viewModel);
     }
 
-    [Route("/customers/details/{type}")]
-    public ActionResult Details(int type)
+    [Route("/customers/details/{id}")]
+    public ActionResult Details(int Id)
     {
-      Customer customer = new Customer { Name = "Donny Buckman", Type = 0 };
-      Customer customer1 = new Customer { Name = "Susan Buckman", Type = 1 };
+      var customer = _context.Customers.Find(Id.ToString());
 
-      if (type == 0)
-        return View(customer);
-      if (type == 1)
-        return View(customer1);
-
-      return View();
+      return View(customer);
     }
-    
-    private List<Customer> GetCustomers()
+    public ActionResult New()
     {
-      List<Customer> customers = new List<Customer>();
-          Customer customer = new Customer { Name = "Donny Buckman", Type = 0 };
-          Customer customer1 = new Customer { Name = "Susan Buckman", Type = 1 };
-          customers.Add(customer);
-          customers.Add(customer1);
-
-      return customers;
+      return View();
     }
   }
 }

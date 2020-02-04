@@ -16,7 +16,7 @@
   @foreach (var movie in Model.Movies)
   {
     <tr>
-      <td>@movie.Name</td>
+      <td>@Html.ActionLink(movie.Name, "Detail", "Movies", new { id = movie.Id }, null)</td>
       <td>@movie.Genre.Type</td>
       <td>@movie.ReleaseDate.ToString("MM/dd/yyyy")</td>
       <td>@movie.DateAdded.ToString("MM/dd/yyyy")</td>

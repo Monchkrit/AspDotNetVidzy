@@ -1,0 +1,5 @@
+﻿INSERT INTO "Customers" ("CustomerId", "Name", "IsSubscribedToNewsletter", "MembershipTypeId", "BirthDate")
+	VALUES ('1', 'Susan Buckman', True, '2', '09/28/1953');
+INSERT INTO "Customers" ("CustomerId", "Name", "IsSubscribedToNewsletter", "MembershipTypeId", "BirthDate")
+	VALUES ('2', 'Adrian Haro', True, '3', '09/28/1996');
+	
