@@ -4,6 +4,11 @@
 {
   <text>There aren't any movies.</text>
 }
+<br/>
+<button class="btn btn-outline-primary" type="submit">
+  @Html.ActionLink("Add", "New", "Movies", null)
+</button>
+<br/>
 <table class="table table-bordered table-hover">
   <thead>
     <tr>
@@ -16,7 +21,7 @@
   @foreach (var movie in Model.Movies)
   {
     <tr>
-      <td>@Html.ActionLink(movie.Name, "Detail", "Movies", new { id = movie.Id }, null)</td>
+      <td>@Html.ActionLink(movie.Name, "Edit", "Movies", new { id = movie.Id }, null)</td>
       <td>@movie.Genre.Type</td>
       <td>@movie.ReleaseDate.ToString("MM/dd/yyyy")</td>
       <td>@movie.DateAdded.ToString("MM/dd/yyyy")</td>

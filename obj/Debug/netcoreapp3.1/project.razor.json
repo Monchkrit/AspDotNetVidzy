@@ -20511,6 +20511,11 @@
       "FileKind": "mvc"
     },
     {
+      "FilePath": "/home/monchkrit/Code-House/AspDotNet/MVC5Course/Vidly/Views/Movies/MovieForm.cshtml",
+      "TargetPath": "Views/Movies/MovieForm.cshtml",
+      "FileKind": "mvc"
+    },
+    {
       "FilePath": "/home/monchkrit/Code-House/AspDotNet/MVC5Course/Vidly/Views/Shared/Error.cshtml",
       "TargetPath": "Views/Shared/Error.cshtml",
       "FileKind": "mvc"
@@ -20538,11 +20543,6 @@
     {
       "FilePath": "/home/monchkrit/Code-House/AspDotNet/MVC5Course/Vidly/Views/Customers/Index.cshtml",
       "TargetPath": "Views/Customers/Index.cshtml",
-      "FileKind": "mvc"
-    },
-    {
-      "FilePath": "/home/monchkrit/Code-House/AspDotNet/MVC5Course/Vidly/Views/Movies/New.cshtml",
-      "TargetPath": "Views/Movies/New.cshtml",
       "FileKind": "mvc"
     },
     {

@@ -33,7 +33,9 @@ namespace Vidly.Controllers
         {
           Name = customer.Name,
           CustomerId = customer.CustomerId,
-          BirthDate = customer.BirthDate
+          BirthDate = customer.BirthDate,
+          IsSubscribedToNewsletter = customer.IsSubscribedToNewsletter,
+          MembershipTypeId = customer.MembershipTypeId
         };
         customerList.Add(c);
       }
@@ -62,12 +64,22 @@ namespace Vidly.Controllers
         MembershipTypes = memberships
       };
 
-      return View(viewModel);
+      return View("CustomerForm", viewModel);
     }
     [HttpPost]
-    public ActionResult Create(Customer customer)
+    public ActionResult Save(Customer customer)
     {
-      _context.Add(customer);
+      if (customer.CustomerId == 0)
+        _context.Add(customer);
+      else
+      {
+        var customerInDb = _context.Customers.Single(c => c.CustomerId == customer.CustomerId);
+        customerInDb.BirthDate = customer.BirthDate;
+        customerInDb.CustomerId = customer.CustomerId;
+        customerInDb.Name = customer.Name;
+        customerInDb.IsSubscribedToNewsletter = customer.IsSubscribedToNewsletter;
+        customerInDb.MembershipTypeId = customer.MembershipTypeId;
+      }
       _context.SaveChanges();
 
       return RedirectToAction("Index", "Customers");
