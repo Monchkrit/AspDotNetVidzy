@@ -32,7 +32,8 @@ namespace Vidly.Controllers
         Customer c = new Customer
         {
           Name = customer.Name,
-          CustomerId = customer.CustomerId
+          CustomerId = customer.CustomerId,
+          BirthDate = customer.BirthDate
         };
         customerList.Add(c);
       }
@@ -47,31 +48,43 @@ namespace Vidly.Controllers
     [Route("/customers/details/{id}")]
     public ActionResult Details(int Id)
     {
-      var customer = _context.Customers.Find(Id.ToString());
+      var customer = _context.Customers.Find(Id);
 
       return View(customer);
     }
     public ActionResult New()
     {
-      var membershipList = new List<MembershipType>();
       var memberships = _context.MembershipTypes.ToList();
 
-      foreach (var membership in memberships)
-      {
-        MembershipType m = new MembershipType
-        {
-          Id = membership.Id,
-          Name = membership.Name
-        };
-        membershipList.Add(m);
-      }
 
-      var viewModel = new NewCustomerViewModel
+      var viewModel = new CustomerFormViewModel
       {
-        MembershipTypes = membershipList
+        MembershipTypes = memberships
       };
 
       return View(viewModel);
+    }
+    [HttpPost]
+    public ActionResult Create(Customer customer)
+    {
+      _context.Add(customer);
+      _context.SaveChanges();
+
+      return RedirectToAction("Index", "Customers");
+    }
+    public ActionResult Edit(int Id)
+    {
+      var customer = _context.Customers.FirstOrDefault(c => c.CustomerId == Id);
+
+      if (customer == null)
+        return NotFound();
+
+      var viewModel = new CustomerFormViewModel
+      {
+        Customer = customer,
+        MembershipTypes = _context.MembershipTypes.ToList()
+      };
+      return View("CustomerForm", viewModel);
     }
   }
 }

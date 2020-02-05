@@ -8,12 +8,14 @@
   <thead>
     <tr>
       <th>Customers</th>
+      <th>Customer Birthday</th>
     </tr>
   </thead>
   @foreach (var customer in Model.Customers)
   {
     <tr>
-      <td>@Html.ActionLink(customer.Name, "Details", "Customers", new { id = customer.CustomerId }, null)</td>
+      <td>@Html.ActionLink(customer.Name, "Edit", "Customers", new { id = customer.CustomerId }, null)</td>
+      <td>@customer.BirthDate.ToString("MM/dd/yyyy")</td>
     </tr>
   }
 </table>

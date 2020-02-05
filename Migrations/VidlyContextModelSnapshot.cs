@@ -36,8 +36,10 @@ namespace Vidly.Migrations
 
             modelBuilder.Entity("Vidly.Models.Customer", b =>
                 {
-                    b.Property<string>("CustomerId")
-                        .HasColumnType("text");
+                    b.Property<int>("CustomerId")
+                        .ValueGeneratedOnAdd()
+                        .HasColumnType("integer")
+                        .HasAnnotation("Npgsql:ValueGenerationStrategy", NpgsqlValueGenerationStrategy.IdentityByDefaultColumn);
 
                     b.Property<DateTime>("BirthDate")
                         .HasColumnType("timestamp without time zone");

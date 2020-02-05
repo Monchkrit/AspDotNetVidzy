@@ -20531,8 +20531,8 @@
       "FileKind": "mvc"
     },
     {
-      "FilePath": "/home/monchkrit/Code-House/AspDotNet/MVC5Course/Vidly/Views/Customers/New.cshtml",
-      "TargetPath": "Views/Customers/New.cshtml",
+      "FilePath": "/home/monchkrit/Code-House/AspDotNet/MVC5Course/Vidly/Views/Customers/CustomerForm.cshtml",
+      "TargetPath": "Views/Customers/CustomerForm.cshtml",
       "FileKind": "mvc"
     },
     {

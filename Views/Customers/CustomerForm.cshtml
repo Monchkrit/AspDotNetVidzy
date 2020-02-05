@@ -1,11 +1,11 @@
-@model Vidly.ViewModels.NewCustomerViewModel
+@model Vidly.ViewModels.CustomerFormViewModel
 
 @{
-    ViewData["Title"] = "Customer Detail";
+    ViewData["Title"] = "Customer Form";
     Layout = "~/Views/Shared/_Layout.cshtml";
 }
 
-<h2>New Customer</h2>
+<h2>Customer Form</h2>
 @using (Html.BeginForm("Create", "Customers"))
 {
     <div class="form-group">
@@ -13,7 +13,7 @@
         @Html.TextBoxFor(c => c.Customer.Name, new { @class = "form-control" })
         <br/>
         @Html.LabelFor(c => c.Customer.BirthDate)
-        @Html.TextBoxFor(c => c.Customer.BirthDate, new { @class = "form-control" })
+        @Html.TextBoxFor(c => c.Customer.BirthDate, "{0:MM/dd/yyyy}", new { @class = "form-control" })
         <br/>
         @Html.LabelFor(m => m.MembershipTypes, "Membership Type")
         @Html.DropDownListFor(m => m.Customer.MembershipTypeId, new SelectList(Model.MembershipTypes, "Id", "Name"), new { @class = "form-control" })
@@ -23,4 +23,5 @@
             @Html.CheckBoxFor(c => c.Customer.IsSubscribedToNewsletter) Subscribe To Newsletter
         </label>
     </div>
+    <button type="submit" class="btn btn-primary">Save</button>
 }
