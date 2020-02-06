@@ -9,6 +9,6 @@ namespace Vidly.ViewModels
   {
     public IEnumerable<Genre> Genres { get; set; }
     public Movie Movie { get; set; }
-    public DateTime DayAdded = DateTime.Now;
+    public String Heading { get; set; }
   }
 }

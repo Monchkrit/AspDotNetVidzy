@@ -51,9 +51,12 @@ namespace Vidly.Controllers
     }
     public ActionResult New()
     {
+      string source = "New Movie";
+
       var viewModel = new MovieFormViewModel
       {
-        Genres = _context.Genres.ToList()
+        Genres = _context.Genres.ToList(),
+        Heading = source
       };
 
       return View("MovieForm", viewModel);
@@ -80,11 +83,13 @@ namespace Vidly.Controllers
     public ActionResult Edit(int Id)
     {
       var movie = _context.Movies.Single(m => m.Id == Id);
+      string source = "Edit Movie";
 
       var viewModel = new MovieFormViewModel
       {
         Movie = movie,
-        Genres = _context.Genres.ToList()
+        Genres = _context.Genres.ToList(),
+        Heading = source
       };
 
       return View("MovieForm", viewModel);

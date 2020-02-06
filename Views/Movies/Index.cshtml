@@ -16,6 +16,7 @@
       <th>Genre</th>
       <th>Release Date</th>
       <th>Date Added</th>
+      <th>Stock</th>
     </tr>
   </thead>
   @foreach (var movie in Model.Movies)
@@ -25,6 +26,7 @@
       <td>@movie.Genre.Type</td>
       <td>@movie.ReleaseDate.ToString("MM/dd/yyyy")</td>
       <td>@movie.DateAdded.ToString("MM/dd/yyyy")</td>
+      <th>@movie.Stock</th>
     </tr>
   }
 </table>
