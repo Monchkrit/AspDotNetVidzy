@@ -7,7 +7,6 @@ namespace Vidly.Models
 {
   public class Customer
   {
-    [Key]
     public int CustomerId { get; set; }
     
     [Required]

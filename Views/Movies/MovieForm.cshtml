@@ -1,26 +1,38 @@
 @model Vidly.ViewModels.MovieFormViewModel
 
 @{
-    ViewData["Title"] = "Customer Form";
+    ViewData["Title"] = "Movie Form";
     Layout = "~/Views/Shared/_Layout.cshtml";
 }
 
 <h2>@Model.Heading</h2>
+ @* <div asp-validation-summary="All" class="text-danger"></div> *@
+ <div class="form-group">
+   
+ </div>
 @using (Html.BeginForm("Save", "Movies"))
 {
-    <div class="form-group">
-      @Html.LabelFor(m => m.Movie.Name)
-      @Html.TextBoxFor(m => m.Movie.Name, new { @class = "form-control"})
-      <br/>
-      @Html.LabelFor(m => m.Movie.ReleaseDate, "Release Date")
-      @Html.TextBoxFor(m => m.Movie.ReleaseDate, new { @class = "form-control"})
-      <br/>
-      @Html.LabelFor(g => g.Genres)
-      @Html.DropDownListFor(g => g.Movie.GenreId, new SelectList(Model.Genres, "GenreId", "Type"), new { @class = "form-control" })
-      <br/>
-      @Html.LabelFor(m => m.Movie.Stock)
-      @Html.TextBoxFor(m => m.Movie.Stock, new { @class = "form-control" })
-    </div>
-    @Html.HiddenFor(m => m.Movie.Id)
-    <button type="submit" class="btn btn-primary">Save</button>
+  <div class="form-group">
+    @Html.LabelFor(m => m.Name)
+    @Html.TextBoxFor(m => m.Name, new { @class = "form-control"})
+    @Html.ValidationMessageFor(m => m.Name)      
+    <br/>
+    @Html.LabelFor(m => m.ReleaseDate, "Release Date")
+    @Html.TextBoxFor(m => m.ReleaseDate, new { @class = "form-control"})
+    <br/>
+    @Html.LabelFor(g => g.Genres)
+    @Html.DropDownListFor(g => g.GenreId, new SelectList(Model.Genres, "GenreId", "Type"), new { @class = "form-control" })
+    <br/>
+    @Html.LabelFor(m => m.Stock)
+    @Html.TextBoxFor(m => m.Stock, new { @class = "form-control" })
+  </div>
+  @Html.HiddenFor(m => m.Id)
+  <button type="submit" class="btn btn-primary">Save</button>
 }
+
+<style>
+  .input-validation-error {
+    border-color: red;
+    color: red;
+  }
+</style>

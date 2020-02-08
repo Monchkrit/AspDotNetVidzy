@@ -56,12 +56,9 @@ namespace Vidly.Controllers
     }
     public ActionResult New()
     {
-      var memberships = _context.MembershipTypes.ToList();
-
-
       var viewModel = new CustomerFormViewModel
       {
-        MembershipTypes = memberships
+        MembershipTypes = _context.MembershipTypes.ToList()
       };
 
       return View("CustomerForm", viewModel);
@@ -69,31 +66,40 @@ namespace Vidly.Controllers
     [HttpPost]
     public ActionResult Save(Customer customer)
     {
-      if (!ModelState.IsValid)
+      if (ModelState.IsValid)
+      {
+        if (customer.CustomerId == 0)
+        {
+        _context.Add(customer);
+        }
+        
+        else
+        {
+          var customerInDb = _context.Customers.Single(c => c.CustomerId == customer.CustomerId);
+          customerInDb.BirthDate = customer.BirthDate;
+          customerInDb.CustomerId = customer.CustomerId;
+          customerInDb.Name = customer.Name;
+          customerInDb.IsSubscribedToNewsletter = customer.IsSubscribedToNewsletter;
+          customerInDb.MembershipTypeId = customer.MembershipTypeId;
+        }
+        _context.SaveChanges();
+
+        return RedirectToAction("Index", "Customers");
+      }
+      else
       {
         var viewModel = new CustomerFormViewModel
         {
           Customer = customer,
-          MembershipTypes = _context.MembershipTypes
+          MembershipTypes = _context.MembershipTypes.ToList()
         };
 
         return View("CustomerForm", viewModel);
       }
-      if (customer.CustomerId == 0)
-        _context.Add(customer);
-      else
-      {
-        var customerInDb = _context.Customers.Single(c => c.CustomerId == customer.CustomerId);
-        customerInDb.BirthDate = customer.BirthDate;
-        customerInDb.CustomerId = customer.CustomerId;
-        customerInDb.Name = customer.Name;
-        customerInDb.IsSubscribedToNewsletter = customer.IsSubscribedToNewsletter;
-        customerInDb.MembershipTypeId = customer.MembershipTypeId;
-      }
-      _context.SaveChanges();
-
-      return RedirectToAction("Index", "Customers");
     }
+
+      
+      
     public ActionResult Edit(int Id)
     {
       var customer = _context.Customers.FirstOrDefault(c => c.CustomerId == Id);
