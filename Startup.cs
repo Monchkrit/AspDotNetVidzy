@@ -28,6 +28,10 @@ namespace Vidly
             services.AddControllersWithViews();
             services.AddDbContext<VidlyContext>(options =>
                 options.UseNpgsql(Configuration.GetConnectionString("VidlyContext")));
+            services.AddControllers(options =>
+            {
+                options.RespectBrowserAcceptHeader = true; // false by default
+            });
             services.AddMvc().SetCompatibilityVersion(CompatibilityVersion.Version_3_0);
         }
 
