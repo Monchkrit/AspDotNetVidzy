@@ -102,7 +102,7 @@ namespace Vidly.Controllers.Api
     }
 
     [HttpDelete]
-    [Route("/api/customers/delete")]
+    [Route("/api/customers/delete/{Id}")]
     public void DeleteCustomer(int Id)
     {
       var customerInDb = _context.Customers.SingleOrDefault(c => c.CustomerId == Id);
@@ -113,6 +113,7 @@ namespace Vidly.Controllers.Api
       _context.Customers.Remove(customerInDb);
       _context.SaveChanges();
     }
+
     public class HttpResponseException : Exception
     {
       public int Status { get; set; } = 500;

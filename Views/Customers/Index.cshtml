@@ -1,14 +1,21 @@
 @model Vidly.ViewModels.CustomerViewModel
 
+@{
+    ViewData["Title"] = "Customer Detail";
+    Layout = "~/Views/Shared/_Layout.cshtml";
+}
+
 @if (Model.Customers.Count == 0)
 {
   <text>There aren't any customers.</text>
 }
-<table class="table table-hover">
+<br/>
+<table id= "customers" class="table table-hover">
   <thead>
     <tr>
       <th>Customers</th>
       <th>Customer Birthday</th>
+      <th>Delete</th>
     </tr>
   </thead>
   @foreach (var customer in Model.Customers)
@@ -16,6 +23,44 @@
     <tr>
       <td>@Html.ActionLink(customer.Name, "Edit", "Customers", new { id = customer.CustomerId }, null)</td>
       <td>@customer.BirthDate.ToString("MM/dd/yyyy")</td>
+      <td><button data-customer-id="@customer.CustomerId" class="btn-link js-delete">Delete</button></td>
     </tr>
   }
 </table>
+
+@section scripts
+{
+  <script>
+
+  $(document).ready(function () {
+      $("#customers").DataTable();
+    $("#customers").on("click", ".js-delete", function () {
+      let button = $(this);
+
+      bootbox.confirm({
+        title: "Delete Customer?",
+        message: "Are you sure you want to delete this customer?",
+        buttons: {
+          cancel: {
+            label: '<i class="fa fa-times"></i> Cancel'
+          },
+          confirm: {
+            label: '<i class="fa fa-check"></i> Confirm'
+          }
+        },
+        callback: function (result) {
+          if (result){
+          $.ajax({
+            url: "api/customers/delete/" + button.attr("data-customer-id"),
+            method: "DELETE",
+            success: function () {
+              button.parents("tr").remove();
+            }
+          });
+          }
+      }
+      });
+    });
+  });
+  </script>
+}

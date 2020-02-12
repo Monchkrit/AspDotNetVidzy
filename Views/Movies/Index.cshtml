@@ -5,11 +5,13 @@
   <text>There aren't any movies.</text>
 }
 <br/>
-<button class="btn btn-outline-primary" type="submit">
-  @Html.ActionLink("Add", "New", "Movies", null)
-</button>
+<div class="row">  
+  <button class="btn btn-outline-primary" type="submit">
+    @Html.ActionLink("Add", "New", "Movies", null)
+  </button>
+</div>
 <br/>
-<table class="table table-bordered table-hover">
+<table id="movie-table" class="table table-bordered table-hover">
   <thead>
     <tr>
       <th>Movies</th>
@@ -28,3 +30,12 @@
     </tr>
   }
 </table>
+
+@section scripts
+{
+  <script>
+    $(document).ready(function() {
+      $('#movie-table').DataTable()
+    });
+  </script>
+}
