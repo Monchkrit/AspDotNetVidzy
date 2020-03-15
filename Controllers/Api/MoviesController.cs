@@ -20,14 +20,14 @@ namespace Vidly.Controllers.Api
     [Route("/api/movies")]
     public IEnumerable<MovieDto> Get()
     {
-      var movies = from m in _context.Movies
+      var movies = from m in _context.Movies.Include(g => g.Genre)
         select new MovieDto()
         {
+          Id = m.Id,
           Name = m.Name,
           ReleaseDate = m.ReleaseDate,
           DateAdded = m.DateAdded,
-          GenreId = m.GenreId,
-          Stock = m.Stock
+          Genre = m.Genre
         };
 
       return movies;
@@ -39,10 +39,10 @@ namespace Vidly.Controllers.Api
       var movie = new MovieDto();
       var m = _context.Movies.SingleOrDefault(m => m.Id == Id);
       
+      movie.Id = m.Id;
       movie.Name = m.Name;
       movie.DateAdded = m.DateAdded;
       movie.ReleaseDate = m.ReleaseDate;
-      movie.Stock = m.Stock;
       movie.GenreId = m.GenreId;
 
       return movie;
@@ -63,39 +63,45 @@ namespace Vidly.Controllers.Api
         Name = movie.Name,
         GenreId = movie.GenreId,
         ReleaseDate = movie.ReleaseDate,
-        DateAdded = movie.DateAdded,
-        Stock = movie.Stock
+        DateAdded = movie.DateAdded
       };
       return dto;
     }
 
     [HttpPut]
-    [Route("/api/movies/update")]
-    public MovieDto UpdateMovieDto(int Id, Movie movie)
+    [Route("/api/movies/edit/{Id}")]
+    public void UpdateMovieDto(int Id, MovieDto movieDto)
     {
       if (!ModelState.IsValid)
         throw new HttpResponseException();
 
       var movieInDb = _context.Movies.SingleOrDefault(m => m.Id == Id);
 
-      if (movie == null)
+      if (movieInDb == null)
         throw new HttpResponseException();
-
-      movieInDb.Name = movie.Name;
-      movieInDb.GenreId = movie.GenreId;
-      movieInDb.DateAdded = movie.DateAdded;
-      movieInDb.ReleaseDate = movie.ReleaseDate;
-      movieInDb.Stock = movie.Stock;
+      movieInDb.Id = movieDto.Id;
+      movieInDb.Name = movieDto.Name;
+      movieInDb.GenreId = movieDto.GenreId;
+      movieInDb.ReleaseDate = movieDto.ReleaseDate;
 
       _context.SaveChanges();
 
       var dto = new MovieDto
       {
+        Id = movieInDb.Id,
         Name = movieInDb.Name,
-        Stock = movieInDb.Stock
+        GenreId = movieInDb.GenreId,
+        ReleaseDate = movieInDb.ReleaseDate
       };
+      return 
+    }
 
-      return dto;
+    [Route("/api/movies/delete/{id}")]
+    public void DeleteMovie(int Id)
+    {
+      var movie = _context.Movies.SingleOrDefault(m => m.Id == Id);
+      _context.Remove(movie);
+      _context.SaveChanges();
     }
 
     public class HttpResponseException : Exception
