@@ -1,22 +1,23 @@
 using System;
 using System.Collections.Generic;
-using Microsoft.EntityFrameworkCore;
 using System.Linq;
 using Microsoft.AspNetCore.Mvc;
-using Microsoft.AspNetCore.Http;
 using Vidly.Models;
 using Vidly.Dtos;
+using AutoMapper;
+using Microsoft.EntityFrameworkCore;
 
 namespace Vidly.Controllers.Api
 {
-  [ApiController]
-  [Route("[controller]")]
   public class CustomersController : ControllerBase
   {
     private VidlyContext _context;
-    public CustomersController()
+    private readonly IMapper _mapper;
+
+    public CustomersController(IMapper mapper)
     {
       _context = new VidlyContext();
+      _mapper = mapper ?? throw new ArgumentNullException(nameof(mapper));
     }
     
     [HttpGet]
@@ -24,11 +25,14 @@ namespace Vidly.Controllers.Api
     public IEnumerable<CustomerDto> GetCustomers()
     { 
       var customers = from c in _context.Customers
+                .Include(c => c.MembershipType)
+                .ToList()
           select new CustomerDto()
           {
             CustomerId = c.CustomerId,
             IsSubscribedToNewsletter = c.IsSubscribedToNewsletter,
             MembershipTypeId = c.MembershipTypeId,
+            MembershipType = _mapper.Map<MembershipType, MembershipTypeDto>(c.MembershipType),
             Name = c.Name,
             BirthDate = c.BirthDate
           };

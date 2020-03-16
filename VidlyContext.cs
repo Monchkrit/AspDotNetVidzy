@@ -1,3 +1,4 @@
+using System;
 using Microsoft.EntityFrameworkCore;
 using Vidly.Models;
 
@@ -19,6 +20,5 @@ namespace Vidly
 
     protected override void OnConfiguring(DbContextOptionsBuilder optionsBuilder)
           => optionsBuilder.UseNpgsql("Host=localhost;Database=vidly;Username=postgres;Password=password");
-
   }
 }

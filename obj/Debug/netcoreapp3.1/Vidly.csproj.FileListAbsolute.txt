@@ -62,3 +62,5 @@
 /home/monchkrit/Code-House/AspDotNet/MVC5Course/Vidly/obj/Debug/netcoreapp3.1/Razor/Views/Movies/Detail.cshtml.g.cs
 /home/monchkrit/Code-House/AspDotNet/MVC5Course/Vidly/obj/Debug/netcoreapp3.1/Razor/Views/Customers/CustomerForm.cshtml.g.cs
 /home/monchkrit/Code-House/AspDotNet/MVC5Course/Vidly/obj/Debug/netcoreapp3.1/Razor/Views/Movies/MovieForm.cshtml.g.cs
+/home/monchkrit/Code-House/AspDotNet/MVC5Course/Vidly/bin/Debug/netcoreapp3.1/AutoMapper.dll
+/home/monchkrit/Code-House/AspDotNet/MVC5Course/Vidly/bin/Debug/netcoreapp3.1/AutoMapper.Extensions.Microsoft.DependencyInjection.dll

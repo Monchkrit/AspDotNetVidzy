@@ -6,15 +6,19 @@ using System.Collections.Generic;
 using Microsoft.EntityFrameworkCore;
 using Vidly.ViewModels;
 using System.Linq;
+using AutoMapper;
 
 namespace Vidly.Controllers
 {
   public class CustomersController : Controller
   {
     public VidlyContext _context;
-    public CustomersController()
+    private readonly IMapper _mapper;
+
+    public CustomersController(IMapper mapper)
     {
       _context = new VidlyContext();
+      _mapper = mapper ?? throw new Exception();
     }
     protected override void Dispose(bool disposing)
     {

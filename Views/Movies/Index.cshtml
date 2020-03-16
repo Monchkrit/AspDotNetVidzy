@@ -42,16 +42,16 @@
         },
         columns: [
         {
-          data: "name",
+          data: "id",
           render: function(data, type, movie) {
-            return "<a href='/api/movies/edit/" + movie.Id + "'>" + movie.name + "</a>";
+            return "<a href='/movies/edit/" + data + "'>" + movie.name + "</a>";
           }
         },
         {
-          data: "releaseDate"
+          data: "genre.type"
         },
         {
-          data: "genre.type"
+          data: "releaseDate"
         },
         {
           data: "id",
@@ -81,7 +81,7 @@
               url: "/api/movies/delete/" + button.attr("data-movie-id"),
               method: "DELETE",
               success: function () {
-                button.parents("tr").remove();
+                table.row(button.parents("tr")).remove().draw();
               }
             });
           }

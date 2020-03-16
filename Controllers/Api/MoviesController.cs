@@ -69,7 +69,7 @@ namespace Vidly.Controllers.Api
     }
 
     [HttpPut]
-    [Route("/api/movies/edit/{Id}")]
+    [Route("/api/movies/detail/{Id}")]
     public void UpdateMovieDto(int Id, MovieDto movieDto)
     {
       if (!ModelState.IsValid)
@@ -93,7 +93,8 @@ namespace Vidly.Controllers.Api
         GenreId = movieInDb.GenreId,
         ReleaseDate = movieInDb.ReleaseDate
       };
-      return 
+
+      return;
     }
 
     [Route("/api/movies/delete/{id}")]
