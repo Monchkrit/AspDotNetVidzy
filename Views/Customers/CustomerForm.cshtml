@@ -9,13 +9,13 @@
 <h2>Customer Form</h2>
 @using (Html.BeginForm("Save", "Customers"))
 {
-    if (Model.Customer == null || Model.Customer.CustomerId == 0)
+    if (Model.Customer == null || Model.Customer.CustomerID == 0)
 {
     @Html.Hidden("Id", 0);
 }
 else
 {
-    @Html.HiddenFor(c => c.Customer.CustomerId)
+    @Html.HiddenFor(c => c.Customer.CustomerID)
 }
     <div class="form-group">
         @Html.LabelFor(c => c.Customer.Name)

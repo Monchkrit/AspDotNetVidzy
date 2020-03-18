@@ -1,7 +1,7 @@
-﻿INSERT INTO "Customers" ("CustomerId", "Type", "Name", "IsSubscribedToNewsletter", "MembershipTypeId", "BirthDate")
-	VALUES ('0', '0', 'Donny Buckman', True, '2', '10/26/1974');
-INSERT INTO "Customers" ("CustomerId", "Type", "Name", "IsSubscribedToNewsletter", "MembershipTypeId", "BirthDate")
-	VALUES ('1', '1', 'Susan Buckman', True, '2', '09/28/1953');
-INSERT INTO "Customers" ("CustomerId", "Type", "Name", "IsSubscribedToNewsletter", "MembershipTypeId", "BirthDate")
-	VALUES ('2', '2', 'Adrian Haro', True, '3', '09/28/1996');
+﻿INSERT INTO "Customers" ("Name", "IsSubscribedToNewsletter", "MembershipTypeId", "BirthDate")
+	VALUES ('Donny Buckman', True, '2', '10/26/1974');
+INSERT INTO "Customers" ("Name", "IsSubscribedToNewsletter", "MembershipTypeId", "BirthDate")
+	VALUES ('Susan Buckman', True, '2', '09/28/1953');
+INSERT INTO "Customers" ("Name", "IsSubscribedToNewsletter", "MembershipTypeId", "BirthDate")
+	VALUES ('Adrian Haro', True, '3', '09/28/1996');
 	

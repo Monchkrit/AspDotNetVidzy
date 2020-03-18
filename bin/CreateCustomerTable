@@ -1,10 +1,10 @@
 ﻿CREATE TABLE "Customers" (
-    "CustomerId" serial NOT NULL,
+    "CustomerID" serial NOT NULL,
     "Name" text NOT NULL,
 "IsSubscribedToNewsletter" boolean NOT NULL DEFAULT FALSE,
 "MembershipTypeId" smallint NOT NULL,
 "BirthDate" timestamp without time zone NOT NULL DEFAULT TIMESTAMP '0001-01-01 00:00:00',
-CONSTRAINT "PK_Customers" PRIMARY KEY ("CustomerId")
+CONSTRAINT "PK_Customers" PRIMARY KEY ("CustomerID")
 );
 ALTER TABLE "Customers" ADD CONSTRAINT "FK_Customers_MembershipType_MembershipTypeId" 
 	FOREIGN KEY ("MembershipTypeId") REFERENCES "MembershipTypes" ("Id") ON DELETE CASCADE;

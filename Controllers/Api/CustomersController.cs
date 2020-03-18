@@ -29,7 +29,7 @@ namespace Vidly.Controllers.Api
                 .ToList()
           select new CustomerDto()
           {
-            CustomerId = c.CustomerId,
+            CustomerID = c.CustomerID,
             IsSubscribedToNewsletter = c.IsSubscribedToNewsletter,
             MembershipTypeId = c.MembershipTypeId,
             MembershipType = _mapper.Map<MembershipType, MembershipTypeDto>(c.MembershipType),
@@ -43,11 +43,11 @@ namespace Vidly.Controllers.Api
     [Route("/api/customer/{id}")]
     public CustomerDto GetCustomer(int Id)
     {
-      var c = _context.Customers.SingleOrDefault(c => c.CustomerId == Id);
+      var c = _context.Customers.SingleOrDefault(c => c.CustomerID == Id);
 
       var customer =  new CustomerDto
       {
-        CustomerId = c.CustomerId,
+        CustomerID = c.CustomerID,
         IsSubscribedToNewsletter = c.IsSubscribedToNewsletter,
         MembershipTypeId = c.MembershipTypeId,
         Name = c.Name,
@@ -75,7 +75,7 @@ namespace Vidly.Controllers.Api
         var dto = new CustomerDto()
         {
           Name = customer.Name,
-          CustomerId = customer.CustomerId,
+          CustomerID = customer.CustomerID,
           BirthDate = customer.BirthDate,
           IsSubscribedToNewsletter = customer.IsSubscribedToNewsletter,
           MembershipTypeId = customer.MembershipTypeId
@@ -91,7 +91,7 @@ namespace Vidly.Controllers.Api
       if (!ModelState.IsValid)
         throw new HttpResponseException();
 
-      var customerInDb = _context.Customers.SingleOrDefault(c => c.CustomerId == Id);
+      var customerInDb = _context.Customers.SingleOrDefault(c => c.CustomerID == Id);
 
       if (customer == null)
         throw new HttpResponseException();
@@ -109,7 +109,7 @@ namespace Vidly.Controllers.Api
     [Route("/api/customers/delete/{Id}")]
     public void DeleteCustomer(int Id)
     {
-      var customerInDb = _context.Customers.SingleOrDefault(c => c.CustomerId == Id);
+      var customerInDb = _context.Customers.SingleOrDefault(c => c.CustomerID == Id);
 
       if (customerInDb == null)
         throw new HttpResponseException();

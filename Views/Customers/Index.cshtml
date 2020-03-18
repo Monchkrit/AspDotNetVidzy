@@ -22,9 +22,9 @@
   @* @foreach (var customer in Model.Customers)
   {
     <tr>
-      <td>@Html.ActionLink(customer.Name, "Edit", "Customers", new { id = customer.CustomerId }, null)</td>
+      <td>@Html.ActionLink(customer.Name, "Edit", "Customers", new { id = customer.CustomerID }, null)</td>
       <td>@customer.BirthDate.ToString("MM/dd/yyyy")</td>
-      <td><button data-customer-id="@customer.CustomerId" class="btn-link js-delete">Delete</button></td>
+      <td><button data-customer-id="@customer.CustomerID" class="btn-link js-delete">Delete</button></td>
     </tr>
   } *@
 </table>
@@ -40,7 +40,7 @@
         },
         columns: [
         {
-          data: "customerId",
+          data: "CustomerID",
           render: function(data, type, customer) {
             return "<a href='/customers/edit/" + data + "'>" + customer.name + "</a>";
           }
@@ -52,7 +52,7 @@
           data: "membershipType.name"
         },
         {
-          data: "customerId",
+          data: "CustomerID",
           render: function(data) {
             return "<button class='btn-link js-delete' data-customer-id=" + data + ">Delete</button>";
           }

@@ -38,7 +38,7 @@ namespace Vidly.Migrations
 
             modelBuilder.Entity("Vidly.Models.Customer", b =>
                 {
-                    b.Property<string>("CustomerId")
+                    b.Property<string>("CustomerID")
                         .HasColumnType("text");
 
                     b.Property<DateTime>("BirthDate")
@@ -57,7 +57,7 @@ namespace Vidly.Migrations
                     b.Property<int>("Type")
                         .HasColumnType("integer");
 
-                    b.HasKey("CustomerId");
+                    b.HasKey("CustomerID");
 
                     b.HasIndex("MembershipTypeId");
 

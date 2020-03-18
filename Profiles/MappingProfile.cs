@@ -14,7 +14,7 @@ namespace Vidly.Profiles
       CreateMap<MembershipType, MembershipTypeDto>();
       CreateMap<MembershipTypeDto, MembershipType>();
 
-      CreateMap<CustomerDto, Customer>().ForMember(c => c.CustomerId, opt => opt.Ignore());
+      CreateMap<CustomerDto, Customer>().ForMember(c => c.CustomerID, opt => opt.Ignore());
 
       CreateMap<MovieDto, Movie>().ForMember(c => c.Id, opt => opt.Ignore());
     }

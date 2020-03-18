@@ -38,7 +38,7 @@ namespace Vidly.Migrations
 
             modelBuilder.Entity("Vidly.Models.Customer", b =>
                 {
-                    b.Property<int>("CustomerId")
+                    b.Property<int>("CustomerID")
                         .ValueGeneratedOnAdd()
                         .HasColumnType("integer")
                         .HasAnnotation("Npgsql:ValueGenerationStrategy", NpgsqlValueGenerationStrategy.IdentityByDefaultColumn);
@@ -56,7 +56,7 @@ namespace Vidly.Migrations
                         .IsRequired()
                         .HasColumnType("text");
 
-                    b.HasKey("CustomerId");
+                    b.HasKey("CustomerID");
 
                     b.HasIndex("MembershipTypeId");
 

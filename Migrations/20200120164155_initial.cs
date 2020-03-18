@@ -11,13 +11,13 @@ namespace Vidly.Migrations
                 name: "Customers",
                 columns: table => new
                 {
-                    CustomerId = table.Column<string>(nullable: false),
+                    CustomerID = table.Column<string>(nullable: false),
                     Type = table.Column<int>(nullable: false),
                     Name = table.Column<string>(nullable: true)
                 },
                 constraints: table =>
                 {
-                    table.PrimaryKey("PK_Customers", x => x.CustomerId);
+                    table.PrimaryKey("PK_Customers", x => x.CustomerID);
                 });
 
             migrationBuilder.CreateTable(

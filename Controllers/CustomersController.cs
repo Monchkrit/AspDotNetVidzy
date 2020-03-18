@@ -18,7 +18,6 @@ namespace Vidly.Controllers
     public CustomersController(IMapper mapper)
     {
       _context = new VidlyContext();
-      _mapper = mapper ?? throw new Exception();
     }
     protected override void Dispose(bool disposing)
     {
@@ -35,7 +34,7 @@ namespace Vidly.Controllers
         Customer c = new Customer
         {
           Name = customer.Name,
-          CustomerId = customer.CustomerId,
+          CustomerID = customer.CustomerID,
           BirthDate = customer.BirthDate,
           IsSubscribedToNewsletter = customer.IsSubscribedToNewsletter,
           MembershipTypeId = customer.MembershipTypeId
@@ -71,16 +70,16 @@ namespace Vidly.Controllers
     {
       if (ModelState.IsValid)
       {
-        if (customer.CustomerId == 0)
+        if (customer.CustomerID == 0)
         {
         _context.Add(customer);
         }
         
         else
         {
-          var customerInDb = _context.Customers.Single(c => c.CustomerId == customer.CustomerId);
+          var customerInDb = _context.Customers.Single(c => c.CustomerID == customer.CustomerID);
           customerInDb.BirthDate = customer.BirthDate;
-          customerInDb.CustomerId = customer.CustomerId;
+          customerInDb.CustomerID = customer.CustomerID;
           customerInDb.Name = customer.Name;
           customerInDb.IsSubscribedToNewsletter = customer.IsSubscribedToNewsletter;
           customerInDb.MembershipTypeId = customer.MembershipTypeId;
@@ -105,7 +104,7 @@ namespace Vidly.Controllers
       
     public ActionResult Edit(int Id)
     {
-      var customer = _context.Customers.FirstOrDefault(c => c.CustomerId == Id);
+      var customer = _context.Customers.FirstOrDefault(c => c.CustomerID == Id);
 
       if (customer == null)
         return NotFound();

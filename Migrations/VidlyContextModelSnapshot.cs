@@ -16,7 +16,7 @@ namespace Vidly.Migrations
 #pragma warning disable 612, 618
             modelBuilder
                 .HasAnnotation("Npgsql:ValueGenerationStrategy", NpgsqlValueGenerationStrategy.IdentityByDefaultColumn)
-                .HasAnnotation("ProductVersion", "3.1.1")
+                .HasAnnotation("ProductVersion", "3.1.2")
                 .HasAnnotation("Relational:MaxIdentifierLength", 63);
 
             modelBuilder.Entity("Vidly.Genre", b =>
@@ -36,7 +36,7 @@ namespace Vidly.Migrations
 
             modelBuilder.Entity("Vidly.Models.Customer", b =>
                 {
-                    b.Property<int>("CustomerId")
+                    b.Property<int>("CustomerID")
                         .ValueGeneratedOnAdd()
                         .HasColumnType("integer")
                         .HasAnnotation("Npgsql:ValueGenerationStrategy", NpgsqlValueGenerationStrategy.IdentityByDefaultColumn);
@@ -54,7 +54,7 @@ namespace Vidly.Migrations
                         .IsRequired()
                         .HasColumnType("text");
 
-                    b.HasKey("CustomerId");
+                    b.HasKey("CustomerID");
 
                     b.HasIndex("MembershipTypeId");
 

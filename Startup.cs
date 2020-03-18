@@ -11,6 +11,8 @@ using Microsoft.Extensions.Hosting;
 using Microsoft.EntityFrameworkCore;
 using Microsoft.AspNetCore.Mvc;
 using AutoMapper;
+using Microsoft.AspNetCore.Identity;
+using Vidly.Areas.Identity.Data;
 
 namespace Vidly
 {
@@ -26,14 +28,22 @@ namespace Vidly
         // This method gets called by the runtime. Use this method to add services to the container.
         public void ConfigureServices(IServiceCollection services)
         {
-            services.AddControllersWithViews();
-            services.AddDbContext<VidlyContext>(options =>
+            services.AddDbContext<VidlyIdentityDbContext>(options =>
                 options.UseNpgsql(Configuration.GetConnectionString("VidlyContext")));
+                services.AddDefaultIdentity<IdentityUser>(options => options.SignIn.RequireConfirmedAccount = false)
+                .AddEntityFrameworkStores<VidlyIdentityDbContext>();
+
+            services.AddDbContext<VidlyContext>(options =>
+            options.UseNpgsql(
+                Configuration.GetConnectionString("VidlyContext")));
+                
+            services.AddControllersWithViews();            
             services.AddControllers(options =>
             {
                 options.RespectBrowserAcceptHeader = true; // false by default
             });
             services.AddAutoMapper(AppDomain.CurrentDomain.GetAssemblies());
+            
             services.AddMvc().SetCompatibilityVersion(CompatibilityVersion.Version_3_0);
         }
 

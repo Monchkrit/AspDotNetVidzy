@@ -20576,13 +20576,28 @@
       "FileKind": "mvc"
     },
     {
+      "FilePath": "/home/monchkrit/Code-House/AspDotNet/MVC5Course/Vidly/Areas/Identity/Pages/_ValidationScriptsPartial.cshtml",
+      "TargetPath": "Areas\\Identity\\Pages\\_ValidationScriptsPartial.cshtml",
+      "FileKind": "mvc"
+    },
+    {
       "FilePath": "/home/monchkrit/Code-House/AspDotNet/MVC5Course/Vidly/Views/Shared/_Layout.cshtml",
       "TargetPath": "Views\\Shared\\_Layout.cshtml",
       "FileKind": "mvc"
     },
     {
+      "FilePath": "/home/monchkrit/Code-House/AspDotNet/MVC5Course/Vidly/Areas/Identity/Pages/_ViewStart.cshtml",
+      "TargetPath": "Areas\\Identity\\Pages\\_ViewStart.cshtml",
+      "FileKind": "mvc"
+    },
+    {
       "FilePath": "/home/monchkrit/Code-House/AspDotNet/MVC5Course/Vidly/Views/Movies/Detail.cshtml",
       "TargetPath": "Views\\Movies\\Detail.cshtml",
+      "FileKind": "mvc"
+    },
+    {
+      "FilePath": "/home/monchkrit/Code-House/AspDotNet/MVC5Course/Vidly/Views/Shared/_LoginPartial.cshtml",
+      "TargetPath": "Views\\Shared\\_LoginPartial.cshtml",
       "FileKind": "mvc"
     },
     {
